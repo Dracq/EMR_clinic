@@ -27,6 +27,8 @@ import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 
+import { Suspense } from "react";
+
 const appointmentSchema = z.object({
   patient_id: z.string().min(1, "Patient ID is required"),
   date: z.string().min(1, "Date is required"),
@@ -35,7 +37,7 @@ const appointmentSchema = z.object({
   notes: z.string().optional(),
 });
 
-export default function NewAppointmentPage() {
+function NewAppointmentForm() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const defaultPatientId = searchParams?.get("patient_id") || "";
@@ -181,5 +183,13 @@ export default function NewAppointmentPage() {
         </div>
       </AppShell>
     </AuthGuard>
+  );
+}
+
+export default function NewAppointmentPage() {
+  return (
+    <Suspense fallback={<div className="flex h-screen items-center justify-center">Loading...</div>}>
+      <NewAppointmentForm />
+    </Suspense>
   );
 }

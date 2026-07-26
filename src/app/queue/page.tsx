@@ -61,7 +61,7 @@ export default function QueuePage() {
               <p className="text-gray-500">Manage patient flow for {format(new Date(), "MMMM do, yyyy")}.</p>
             </div>
             <div className="flex gap-2">
-              <Select value={statusFilter} onValueChange={setStatusFilter}>
+              <Select value={statusFilter} onValueChange={(val) => setStatusFilter(val || "ALL")}>
                 <SelectTrigger className="w-[180px] bg-white">
                   <SelectValue placeholder="Filter by status" />
                 </SelectTrigger>
