@@ -3,7 +3,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { useParams, useRouter } from "next/navigation";
 import Link from "next/link";
-import { ChevronLeft, Calendar, FileText, Activity, CreditCard, Edit, Plus, Phone } from "lucide-react";
+import { ChevronLeft, ChevronRight, Calendar, FileText, Activity, CreditCard, Edit, Plus, Phone } from "lucide-react";
 import { format } from "date-fns";
 import api from "@/lib/axios";
 
