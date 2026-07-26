@@ -34,11 +34,9 @@ export default function PatientsPage() {
               <h1 className="text-2xl font-bold tracking-tight text-gray-900">Patients</h1>
               <p className="text-gray-500">Manage your clinic's patients.</p>
             </div>
-            <Button asChild className="bg-indigo-600 hover:bg-indigo-700">
-              <Link href="/patients/new">
-                <Plus className="w-4 h-4 mr-2" />
-                New Patient
-              </Link>
+            <Button className="bg-indigo-600 hover:bg-indigo-700" onClick={() => window.location.href = "/patients/new"}>
+              <Plus className="w-4 h-4 mr-2" />
+              New Patient
             </Button>
           </div>
 
@@ -72,8 +70,8 @@ export default function PatientsPage() {
                     {search ? "No patients matched your search." : "Get started by adding a new patient."}
                   </p>
                   {!search && (
-                    <Button asChild className="mt-4" variant="outline">
-                      <Link href="/patients/new">Add Patient</Link>
+                    <Button className="mt-4" variant="outline" onClick={() => window.location.href = "/patients/new"}>
+                      Add Patient
                     </Button>
                   )}
                 </div>

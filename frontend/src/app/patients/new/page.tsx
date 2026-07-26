@@ -92,10 +92,8 @@ export default function NewPatientPage() {
       <AppShell>
         <div className="max-w-3xl mx-auto space-y-6">
           <div className="flex items-center gap-4">
-            <Button variant="ghost" size="icon" asChild>
-              <Link href="/patients">
-                <ChevronLeft className="w-5 h-5" />
-              </Link>
+            <Button variant="ghost" size="icon" onClick={() => router.push("/patients")}>
+              <ChevronLeft className="w-5 h-5" />
             </Button>
             <div>
               <h1 className="text-2xl font-bold tracking-tight text-gray-900">Register Patient</h1>

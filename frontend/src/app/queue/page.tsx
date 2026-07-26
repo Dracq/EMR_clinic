@@ -72,8 +72,8 @@ export default function QueuePage() {
                   <SelectItem value="COMPLETED">Completed</SelectItem>
                 </SelectContent>
               </Select>
-              <Button asChild className="bg-indigo-600 hover:bg-indigo-700">
-                <Link href="/appointments/new">Add Walk-in</Link>
+              <Button className="bg-indigo-600 hover:bg-indigo-700" onClick={() => window.location.href = "/appointments/new"}>
+                Add Walk-in
               </Button>
             </div>
           </div>
@@ -145,8 +145,8 @@ export default function QueuePage() {
                           </Button>
                         )}
 
-                        <Button variant="outline" size="sm" asChild className="flex-1 md:flex-none">
-                          <Link href={`/patients/${apt.patient_id}`}>View File</Link>
+                        <Button variant="outline" size="sm" className="flex-1 md:flex-none" onClick={() => window.location.href = `/patients/${apt.patient_id}`}>
+                          View File
                         </Button>
                       </div>
                     </div>
