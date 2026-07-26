@@ -1,0 +1,1 @@
+postgresql://postgres.bwtdenqlhgpzcgdrhwrm:SupabasePrime%402357@aws-0-ap-south-1.pooler.supabase.com:6543/postgres?pgbouncer=true
