@@ -38,8 +38,8 @@ const patientSchema = z.object({
   address: z.string().optional(),
   medical_history: z.string().optional(),
   allergies: z.string().optional(),
-  is_vip: z.boolean().default(false),
-  is_high_risk: z.boolean().default(false),
+  is_vip: z.boolean().optional(),
+  is_high_risk: z.boolean().optional(),
 }).refine(data => data.age || data.dob, {
   message: "Either Age or Date of Birth is required",
   path: ["age"],
