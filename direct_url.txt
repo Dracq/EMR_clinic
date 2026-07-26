@@ -1,1 +1,0 @@
-postgresql://postgres:SupabasePrime%402357@db.bwtdenqlhgpzcgdrhwrm.supabase.co:5432/postgres
