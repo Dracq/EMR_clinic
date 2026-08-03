@@ -23,42 +23,24 @@ interface AuthContextType {
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export function AuthProvider({ children }: { children: ReactNode }) {
-  const [user, setUser] = useState<User | null>(null);
-  const [token, setToken] = useState<string | null>(null);
-  const [isLoading, setIsLoading] = useState(true);
+  const [user, setUser] = useState<User | null>({
+    id: "mocked-doctor-id",
+    name: "Dr. Vikrant Patkar",
+    email: "doctor@patkar.clinic",
+    role: "DOCTOR",
+    is_active: true
+  });
+  const [token, setToken] = useState<string | null>("mocked-token");
+  const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
   const pathname = usePathname();
 
   useEffect(() => {
-    const initAuth = async () => {
-      const storedToken = localStorage.getItem("token");
-      if (storedToken) {
-        try {
-          // Verify token and fetch latest user info
-          const response = await api.get("/api/auth/me");
-          setToken(storedToken);
-          setUser(response.data);
-        } catch (error) {
-          console.error("Auth validation failed", error);
-          localStorage.removeItem("token");
-        }
-      }
-      setIsLoading(false);
-    };
-
-    initAuth();
-  }, []);
-
-  useEffect(() => {
-    // Protect routes
-    if (!isLoading) {
-      if (!user && pathname !== "/login") {
-        router.push("/login");
-      } else if (user && pathname === "/login") {
-        router.push("/dashboard");
-      }
+    // Protect routes - never redirect to login, only redirect away from login
+    if (pathname === "/login") {
+      router.push("/dashboard");
     }
-  }, [user, isLoading, pathname, router]);
+  }, [pathname, router]);
 
   const login = (newToken: string, newUser: User) => {
     localStorage.setItem("token", newToken);
